@@ -1,35 +1,47 @@
+function sendAPIRequest(theUrl, method, callback, postdata) {
+    var xmlHttp = new XMLHttpRequest();
+
+    if (method == "POST") {
+        xmlHttp.setRequestHeader("Content-Type", "application/json");
+    }
+
+    xmlHttp.onreadystatechange = function () {
+        if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
+            callback(xmlHttp.responseText);
+    }
+    xmlHttp.open(method, theUrl, true); // true for asynchronous 
+    xmlHttp.send(postdata);
+}
+
+
 document.documentElement.style.height = '100%';
 document.body.style.height = '100%';
 document.documentElement.style.width = '100%';
 document.body.style.width = '100%';
 
 var div = document.createElement( 'div' );
-var submitForm = document.createElement( 'form' );
-submitForm.action = "http://localhost:8000/api/comment/";
-submitForm.method = "post";
+var submitForm = document.createElement( 'div' );
+//submitForm.action = "http://localhost:8000/api/comment/";
+//submitForm.method = "post";
 submitForm.style.margin = '0 auto';
 submitForm.style.border = "1px solid black";
 
-var comment = document.createElement( 'input' );
+var comment = document.createElement('input');
 comment.type = 'text';
 comment.id = 'comment';
 comment.name = 'comment_field';
-<<<<<<< HEAD
 comment.display = "inline-block";
 comment.placeholder = 'Write your thoughts';
-// alert(window.location.href);
-=======
-//comment.placeholder = 'Write your thoughts';
-
->>>>>>> Made a function that converts the JSON to visible comments
-var submitButton = document.createElement( 'input' );
-submitButton.type = 'submit';
-submitButton.value = 'Submit';
-submitButton.onclick = function() {
+var submitButton = document.createElement( 'button' );
+submitButton.innerHTML = 'Submit';
+submitButton.onclick = function () {
     postdata = {};
     postdata["text"] = document.getElementById("comment").innerHTML;
     postdata["selectedText"] = document.getSelection().toString();
     postdata["webpage"] = window.location.href;
+    sendAPIRequest("http://localhost:8000/api/comment/", "POST", function(responseText) {
+        console.log(responseText);
+    }, postdata);
 }
 
 //append all elements
@@ -91,21 +103,17 @@ messageHolder.scrollTop = messageHolder.scrollHeight;
 
 
 //set attributes for submitForm
-submitForm.action = '';
+//submitForm.action = '';
 function appendMessage(message, order)
 {
   document.getElementById("text" + order).innerHTML = message;
 }
-<<<<<<< HEAD
+
 appendMessage('hello', 0);
 appendMessage('12345', 2);
 appendMessage('asdf', 1);
 div.style.backgroundColor = 'white';
 div.style.opacity = 0;
-
-//set attributes for submitForm
-submitForm.action = '';
-=======
 
 function update(json)
 {
@@ -126,4 +134,3 @@ for (var i =0; i < 2000; i++)
   json.push({'text': i + ' Using overflow with a value other than visible (the default) creates a new block formatting context. This is necessary for technical reasons — if a float intersected with the scrolling element it would forcibly rewrap the content after each scroll step, leading to a slow scrolling experience.Using overflow with a value other than visible (the default) creates a new block formatting context.'});
 
 update(json);
->>>>>>> Made a function that converts the JSON to visible comments
