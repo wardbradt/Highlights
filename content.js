@@ -1,7 +1,7 @@
 function sendAPIRequest(theUrl, method, callback, postdata) {
     var xmlHttp = new XMLHttpRequest();
 
-    xmlHttp.open(method, theUrl, true); // true for asynchronous 
+    xmlHttp.open(method, theUrl, true); // true for asynchronous
     if (method == "POST") {
         xmlHttp.setRequestHeader("Content-Type", "application/json");
     }
@@ -37,15 +37,19 @@ comment.placeholder = 'Write your thoughts';
 comment.style.width = '35%';
 var submitButton = document.createElement( 'button' );
 submitButton.innerHTML = 'Submit';
-submitButton.onclick = function () {
-    postdata = {};
-    postdata["text"] = document.getElementById("comment").innerHTML;
-    postdata["selectedText"] = document.getSelection().toString();
-    postdata["webpage"] = window.location.href;
-    sendAPIRequest("https://localhost:8000/api/comment/", "POST", function (responseText) {
-        console.log(responseText);
-    }, JSON.stringify(postdata));
+submitButton.onclick = function() {
+  addMessage(document.getElementById('comment').value);
+  document.getElementById('comment').value = "";
 };
+// submitButton.onclick = function () {
+//     postdata = {};
+//     postdata["text"] = document.getElementById("comment").innerHTML;
+//     postdata["selectedText"] = document.getSelection().toString();
+//     postdata["webpage"] = window.location.href;
+//     sendAPIRequest("https://localhost:8000/api/comment/", "POST", function (responseText) {
+//         console.log(responseText);
+//     }, JSON.stringify(postdata));
+// };
 
 //append all elements
 document.body.appendChild( div );
@@ -57,7 +61,7 @@ div.style.top = '0%';
 div.style.left = '60%';
 div.style.width = '40%';
 div.style.height = '100%';
-div.style.backgroundColor = 'lightblue';
+div.style.backgroundColor = 'lightgrey';
 div.style.opacity = 0;
 div.style.transition = "opacity 1s";
 div.style.zIndex = 2147483647;
@@ -86,7 +90,7 @@ for (var i = 99; i >= 0; i--) {
   tempText.style.paddingLeft = "5px";
   tempText.style.paddingRight = "5px";
   tempText.style.paddingBottom = "5px";
-  tempDiv.style.height = '50%';
+  tempDiv.style.height = '20%';
   tempDiv.style.width = '95%';
   tempDiv.style.border = 'solid';
   tempDiv.style.borderWidth = '1px';
@@ -134,21 +138,38 @@ function update(json)
   // webpage
 }
 
-var json = [ {'text': 'Using overflow with a value other than visible (the default) creates a new block formatting context. This is necessary for technical reasons — if a float intersected with the scrolling element it would forcibly rewrap the content after each scroll step, leading to a slow scrolling experience.Using overflow with a value other than visible (the default) creates a new block formatting context. '}, {'text': 'qwerty'}, {'text': 'asdf'}];
+// var json = [ {'text': 'Using overflow with a value other than visible (the default) creates a new block formatting context. This is necessary for technical reasons — if a float intersected with the scrolling element it would forcibly rewrap the content after each scroll step, leading to a slow scrolling experience.Using overflow with a value other than visible (the default) creates a new block formatting context. '}, {'text': 'qwerty'}, {'text': 'asdf'}];
+//
+// var json = [];
+// for (var i =0; i < 2000; i++)
+//   json.push({'text': i + ' Using overflow with a value other than visible (the default) creates a new block formatting context. This is necessary for technical reasons — if a float intersected with the scrolling element it would forcibly rewrap the content after each scroll step, leading to a slow scrolling experience.Using overflow with a value other than visible (the default) creates a new block formatting context.'});
+//
+// update(json);
 
-var json = [];
-for (var i =0; i < 2000; i++)
-  json.push({'text': i + ' Using overflow with a value other than visible (the default) creates a new block formatting context. This is necessary for technical reasons — if a float intersected with the scrolling element it would forcibly rewrap the content after each scroll step, leading to a slow scrolling experience.Using overflow with a value other than visible (the default) creates a new block formatting context.'});
-
-update(json);
-
+var forum = [];
 
 function clearThread(){
   for (var i = 99; i >= 0; i--) {
     document.getElementById("text" + i).innerHTML = '';
   }
 }
+//
+// forum = [];
 
+forum = [
+          {'text': 'Wow, this extension is so cool!'},
+          {'text': 'By the way, totally agree :)'},
+          {'text': 'New York Times shows its bias again. Fake news! Sad.'},
+          {'text': 'Did anyone see that Trumps twitter got shut down for 11 minutes today?'},
+          {'text': 'Can it just be 2020 already?'},
+          {'text': 'While I respect that some people do not agree with HW Bushs policies during his administration, I think in this instance, President Donald Trump has displayed his epitomizing immaturity and potential insanity.'},
+          {'text': 'While I believe that Mr. Trumps actions are extrememely disrespectful, I think the manner in which the New York Times has written this article is extremely biased and readers should be aware of this.'}];
 
+update(forum)
+
+function addMessage(str){
+  forum.push({'text': str});
+  update(forum);
+}
 
 // update(json);
