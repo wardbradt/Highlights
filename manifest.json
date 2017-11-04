@@ -1,16 +1,21 @@
 {
-  "manifest_version": 2,
+    "manifest_version": 2,
 
-  "name": "Chrome SN",
-  "description": "This extension will allow the user to use our social network.",
-  "version": "1.0",
+    "name": "Chrome SN",
+    "description": "This extension will allow the user to use our social network.",
+    "version": "1.0",
 
-  "browser_action": {
-    "default_icon": "icon.png",
-    "default_popup": "popup.html"
-  },
-  "permissions": [
-    "activeTab",
-    "storage"
-  ]
+    "browser_action": {
+        "default_icon": "icon.png",
+        "default_popup": "popup.html"
+    },
+
+    "background": {
+        "scripts": [ "contextmenu.js" ]
+    },
+    "permissions": [
+        "activeTab",
+        "storage",
+        "contextMenus"
+    ]
 }
