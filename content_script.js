@@ -1,3 +1,5 @@
+
+
 // JavaScript source code
 // Content Script
 // Runs on the page
@@ -15,3 +17,4 @@ chrome.extension.onRequest.addListener(function (request, sender, sendResponse) 
     else
         sendResponse({}); // snub them.
 });
+

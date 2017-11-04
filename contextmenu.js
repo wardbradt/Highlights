@@ -18,7 +18,6 @@ function sendAPIRequest(theUrl, method, callback, postdata)
 function processSelection(info, tab) {
     chrome.tabs.sendRequest(tab.id, { method: "getSelection" }, function (response) {
         sendServiceRequest(response.data);
-        console.log(response.parentNode);
     });
 }
 

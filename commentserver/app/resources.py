@@ -1,4 +1,4 @@
-# api/resources.py
+﻿# api/resources.py
 
 from django.conf.urls import url, include
 from django.core.paginator import Paginator, InvalidPage
@@ -15,7 +15,7 @@ class CommentResource(ModelResource):
         resource_name = 'comment'
         authorization = Authorization()
         
-    def override_urls(self):
+    def prepend_urls(self):
         return [
             url(r"^api/comment/search%s" % (trailing_slash()), self.wrap_view('get_search'), name="api_get_search"),
         ]
