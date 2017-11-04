@@ -2,6 +2,7 @@ function sendAPIRequest(theUrl, method, callback, postdata)
 {
     var xmlHttp = new XMLHttpRequest();
     
+    xmlHttp.open(method, theUrl, true); // true for asynchronous 
     if (method == "POST") {
         xmlHttp.setRequestHeader("Content-Type", "application/json");
     }
@@ -10,7 +11,6 @@ function sendAPIRequest(theUrl, method, callback, postdata)
         if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
             callback(xmlHttp.responseText);
     }
-    xmlHttp.open(method, theUrl, true); // true for asynchronous 
     xmlHttp.send(postdata);
 }
 
@@ -24,7 +24,7 @@ function processSelection(info, tab) {
 
 function sendServiceRequest(selectedText) {
     console.log(selectedText);
-    sendAPIRequest("http://localhost:8000/api/comment/", "GET", function (responseText) {
+    sendAPIRequest("https://localhost:8000/api/comment/", "GET", function (responseText) {
         console.log(responseText);
     }, null);
 }
