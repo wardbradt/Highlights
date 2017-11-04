@@ -16,7 +16,7 @@ comment.id = 'comment';
 comment.name = 'comment_field';
 comment.display = "inline-block";
 comment.placeholder = 'Write your thoughts';
-alert(window.location.href);
+// alert(window.location.href);
 var submitButton = document.createElement( 'input' );
 submitButton.type = 'submit';
 submitButton.value = 'Submit';
@@ -52,14 +52,14 @@ div.style.zIndex = 2147483647;
 
 // append new message box
 
-// create a div that holds everyting that this funciton creates
+// create a div that holds everyting that this function creates
 var messageHolder = document.createElement('div');
 messageHolder.style.overflowY = 'auto';
 messageHolder.style.height = '90%';
-for (var i = 0; i >= 100; i++) {
+for (var i = 99; i >= 0; i--) {
   var tempDiv = document.createElement('div');
   var tempText = document.createElement('p');
-  tempText.id = 'text'+ (100-i);
+  tempText.id = 'text'+ (i);
   tempText.innerHTML = "";
   tempText.style.paddingTop = "5px";
   tempText.style.paddingLeft = "5px";

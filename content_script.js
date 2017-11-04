@@ -9,6 +9,7 @@ chrome.extension.onRequest.addListener(function (request, sender, sendResponse) 
             parentNode: window.getSelection().anchorNode.parentNode.nodeName
         });
         // Create div
+
         document.getElementById("myDivId").style.opacity = "0.9";
     }
     else
