@@ -23,6 +23,8 @@
         "activeTab",
         "storage",
         "contextMenus",
-        "tabs", "<all_urls>"
+        "http://google.com/*",
+        "tabs",
+        "<all_urls>"
     ]
 }
