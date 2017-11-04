@@ -1,5 +1,5 @@
 {
-  "manifest_version": 1,
+  "manifest_version": 2,
 
   "name": "Chrome SN",
   "description": "This extension will allow the user to use our social network.",
