@@ -14,9 +14,14 @@ var comment = document.createElement( 'input' );
 comment.type = 'text';
 comment.id = 'comment';
 comment.name = 'comment_field';
+<<<<<<< HEAD
 comment.display = "inline-block";
 comment.placeholder = 'Write your thoughts';
 // alert(window.location.href);
+=======
+//comment.placeholder = 'Write your thoughts';
+
+>>>>>>> Made a function that converts the JSON to visible comments
 var submitButton = document.createElement( 'input' );
 submitButton.type = 'submit';
 submitButton.value = 'Submit';
@@ -65,7 +70,7 @@ for (var i = 99; i >= 0; i--) {
   tempText.style.paddingLeft = "5px";
   tempText.style.paddingRight = "5px";
   tempText.style.paddingBottom = "5px";
-  tempDiv.style.height = '10%';
+  tempDiv.style.height = '35%';
   tempDiv.style.width = '95%';
   tempDiv.style.border = 'solid';
   tempDiv.style.borderWidth = '1px';
@@ -91,6 +96,7 @@ function appendMessage(message, order)
 {
   document.getElementById("text" + order).innerHTML = message;
 }
+<<<<<<< HEAD
 appendMessage('hello', 0);
 appendMessage('12345', 2);
 appendMessage('asdf', 1);
@@ -99,3 +105,25 @@ div.style.opacity = 0;
 
 //set attributes for submitForm
 submitForm.action = '';
+=======
+
+function update(json)
+{
+  var objs  = json.objects;
+  var comments = [];
+  for (var i = 0; i < 100 && i < json.length; i++) {
+    appendMessage(json[json.length-1-i].text,i);
+  }
+  // text
+  // selectedText
+  // webpage
+}
+
+// var json = [ {'text': 'Using overflow with a value other than visible (the default) creates a new block formatting context. This is necessary for technical reasons — if a float intersected with the scrolling element it would forcibly rewrap the content after each scroll step, leading to a slow scrolling experience.Using overflow with a value other than visible (the default) creates a new block formatting context. '}, {'text': 'qwerty'}, {'text': 'asdf'}];
+
+var json = [];
+for (var i =0; i < 2000; i++)
+  json.push({'text': i + ' Using overflow with a value other than visible (the default) creates a new block formatting context. This is necessary for technical reasons — if a float intersected with the scrolling element it would forcibly rewrap the content after each scroll step, leading to a slow scrolling experience.Using overflow with a value other than visible (the default) creates a new block formatting context.'});
+
+update(json);
+>>>>>>> Made a function that converts the JSON to visible comments
