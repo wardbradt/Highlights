@@ -5,7 +5,7 @@ document.body.style.width = '100%';
 
 var div = document.createElement( 'div' );
 var submitForm = document.createElement( 'form' );
-submitForm.action = "http://localhost:8000/api/comment/";
+// submitForm.action = "http://localhost:8000/api/comment/";
 submitForm.method = "post";
 submitForm.style.margin = '0 auto';
 submitForm.style.border = "1px solid black";
@@ -14,14 +14,14 @@ var comment = document.createElement( 'input' );
 comment.type = 'text';
 comment.id = 'comment';
 comment.name = 'comment_field';
-<<<<<<< HEAD
+
 comment.display = "inline-block";
 comment.placeholder = 'Write your thoughts';
 // alert(window.location.href);
-=======
+
 //comment.placeholder = 'Write your thoughts';
 
->>>>>>> Made a function that converts the JSON to visible comments
+
 var submitButton = document.createElement( 'input' );
 submitButton.type = 'submit';
 submitButton.value = 'Submit';
@@ -60,7 +60,7 @@ div.style.zIndex = 2147483647;
 // create a div that holds everyting that this function creates
 var messageHolder = document.createElement('div');
 messageHolder.style.overflowY = 'auto';
-messageHolder.style.height = '90%';
+messageHolder.style.height = '80%';
 for (var i = 99; i >= 0; i--) {
   var tempDiv = document.createElement('div');
   var tempText = document.createElement('p');
@@ -70,7 +70,7 @@ for (var i = 99; i >= 0; i--) {
   tempText.style.paddingLeft = "5px";
   tempText.style.paddingRight = "5px";
   tempText.style.paddingBottom = "5px";
-  tempDiv.style.height = '35%';
+  tempDiv.style.height = '50%';
   tempDiv.style.width = '95%';
   tempDiv.style.border = 'solid';
   tempDiv.style.borderWidth = '1px';
@@ -96,16 +96,6 @@ function appendMessage(message, order)
 {
   document.getElementById("text" + order).innerHTML = message;
 }
-<<<<<<< HEAD
-appendMessage('hello', 0);
-appendMessage('12345', 2);
-appendMessage('asdf', 1);
-div.style.backgroundColor = 'white';
-div.style.opacity = 0;
-
-//set attributes for submitForm
-submitForm.action = '';
-=======
 
 function update(json)
 {
@@ -120,10 +110,23 @@ function update(json)
 }
 
 // var json = [ {'text': 'Using overflow with a value other than visible (the default) creates a new block formatting context. This is necessary for technical reasons — if a float intersected with the scrolling element it would forcibly rewrap the content after each scroll step, leading to a slow scrolling experience.Using overflow with a value other than visible (the default) creates a new block formatting context. '}, {'text': 'qwerty'}, {'text': 'asdf'}];
+//
+// var json = [];
+// for (var i =0; i < 2000; i++)
+//   json.push({'text': i + ' Using overflow with a value other than visible (the default) creates a new block formatting context. This is necessary for technical reasons — if a float intersected with the scrolling element it would forcibly rewrap the content after each scroll step, leading to a slow scrolling experience.Using overflow with a value other than visible (the default) creates a new block formatting context.'});
+//
+// update(json);
 
-var json = [];
-for (var i =0; i < 2000; i++)
-  json.push({'text': i + ' Using overflow with a value other than visible (the default) creates a new block formatting context. This is necessary for technical reasons — if a float intersected with the scrolling element it would forcibly rewrap the content after each scroll step, leading to a slow scrolling experience.Using overflow with a value other than visible (the default) creates a new block formatting context.'});
 
-update(json);
->>>>>>> Made a function that converts the JSON to visible comments
+function clearThread(){
+  for (var i = 99; i >= 0; i--) {
+    document.getElementById("text" + i).innerHTML = '';
+    console.log(i);
+  }
+}
+
+
+
+// function checkComments(){
+//
+// }
