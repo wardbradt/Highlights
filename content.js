@@ -1,6 +1,7 @@
 function sendAPIRequest(theUrl, method, callback, postdata) {
     var xmlHttp = new XMLHttpRequest();
 
+    xmlHttp.open(method, theUrl, true); // true for asynchronous 
     if (method == "POST") {
         xmlHttp.setRequestHeader("Content-Type", "application/json");
     }
@@ -9,7 +10,6 @@ function sendAPIRequest(theUrl, method, callback, postdata) {
         if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
             callback(xmlHttp.responseText);
     }
-    xmlHttp.open(method, theUrl, true); // true for asynchronous
     xmlHttp.send(postdata);
 }
 
@@ -21,7 +21,7 @@ document.body.style.width = '100%';
 
 var div = document.createElement( 'div' );
 var submitForm = document.createElement( 'div' );
-//submitForm.action = "http://localhost:8000/api/comment/";
+//submitForm.action = "https://localhost:8000/api/comment/";
 //submitForm.method = "post";
 submitForm.style.margin = '0 auto';
 submitForm.style.border = "1px solid black";
@@ -42,9 +42,9 @@ submitButton.onclick = function () {
     postdata["text"] = document.getElementById("comment").innerHTML;
     postdata["selectedText"] = document.getSelection().toString();
     postdata["webpage"] = window.location.href;
-    sendAPIRequest("http://localhost:8000/api/comment/", "POST", function(responseText) {
+    sendAPIRequest("https://localhost:8000/api/comment/", "POST", function (responseText) {
         console.log(responseText);
-    }, postdata);
+    }, JSON.stringify(postdata));
 };
 
 //append all elements
