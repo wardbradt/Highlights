@@ -1,15 +1,33 @@
+function sendAPIRequest(theUrl, method, callback, postdata)
+{
+    var xmlHttp = new XMLHttpRequest();
+    
+    if (method == "POST") {
+        xmlHttp.setRequestHeader("Content-Type", "application/json");
+    }
+    
+    xmlHttp.onreadystatechange = function() { 
+        if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
+            callback(xmlHttp.responseText);
+    }
+    xmlHttp.open(method, theUrl, true); // true for asynchronous 
+    xmlHttp.send(postdata);
+}
+
 // JavaScript source code
 function processSelection(info, tab) {
     chrome.tabs.sendRequest(tab.id, { method: "getSelection" }, function (response) {
         sendServiceRequest(response.data);
         console.log(response.parentNode);
-
     });
 }
 
 
 function sendServiceRequest(selectedText) {
     console.log(selectedText);
+    sendAPIRequest("http://localhost:8000/api/comment/", "GET", function (responseText) {
+        console.log(responseText);
+    }, null);
 }
 
 chrome.contextMenus.create({
