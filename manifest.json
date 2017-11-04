@@ -13,16 +13,16 @@
     "background": {
         "scripts": [ "contextmenu.js" ]
     },
+    "content_scripts": [
+        {
+            "matches": [ "<all_urls>" ],
+            "js": [ "content_script.js" ]
+        }
+    ],
     "permissions": [
         "activeTab",
         "storage",
         "contextMenus",
-        "http://google.com/*"
-    ],
-
-    "content_scripts": [{
-        "js":["content.js"],
-        "matches":["http://www.google.com/*"],
-        "css":["style.css"]
-      }]
+        "tabs", "<all_urls>"
+    ]
 }
