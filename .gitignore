@@ -1,0 +1,4 @@
+*.sln
+*.pyproj
+*.sqlite3
+__pycache__/
