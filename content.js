@@ -40,12 +40,12 @@ submitButton.innerHTML = 'Submit';
 submitButton.onclick = function() {
   addMessage(document.getElementById('comment').value);
   document.getElementById('comment').value = "";
-};
 // submitButton.onclick = function () {
 //     postdata = {};
 //     postdata["text"] = document.getElementById("comment").innerHTML;
 //     postdata["selectedText"] = document.getSelection().toString();
 //     postdata["webpage"] = window.location.href;
+//     postdata["nodeName"] = document.getSelection().anchorNode.parentNode.nodeName;
 //     sendAPIRequest("https://localhost:8000/api/comment/", "POST", function (responseText) {
 //         console.log(responseText);
 //     }, JSON.stringify(postdata));
@@ -65,15 +65,6 @@ div.style.backgroundColor = 'lightgrey';
 div.style.opacity = 0;
 div.style.transition = "opacity 1s";
 div.style.zIndex = 2147483647;
-
-
-//set attributes for btn
-// "btn.removeAttribute( 'style' );
-// submitButton.type = 'button';
-// submitButton.value = 'hello';
-// submitButton.style.position = 'absolute';
-// submitButton.style.top = '50%';
-// submitButton.style.left = '50%';
 
 // append new message box
 
@@ -153,8 +144,6 @@ function clearThread(){
     document.getElementById("text" + i).innerHTML = '';
   }
 }
-//
-// forum = [];
 
 forum = [
           {'text': 'Wow, this extension is so cool!'},

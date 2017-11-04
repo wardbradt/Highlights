@@ -10,7 +10,7 @@ function sendAPIRequest(theUrl, method, callback, postdata)
     xmlHttp.onreadystatechange = function() { 
         if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
             callback(xmlHttp.responseText);
-    }
+    };
     xmlHttp.send(postdata);
 }
 
