@@ -26,12 +26,15 @@ var submitForm = document.createElement( 'div' );
 submitForm.style.margin = '0 auto';
 submitForm.style.border = "1px solid black";
 
-var comment = document.createElement('input');
-comment.type = 'text';
+var comment = document.createElement('textarea');
+comment.type = 'textarea';
+comment.cols = '80';
+comment.rows = '5';
 comment.id = 'comment';
 comment.name = 'comment_field';
 comment.display = "inline-block";
 comment.placeholder = 'Write your thoughts';
+comment.style.width = '35%';
 var submitButton = document.createElement( 'button' );
 submitButton.innerHTML = 'Submit';
 submitButton.onclick = function () {
@@ -93,6 +96,15 @@ for (var i = 99; i >= 0; i--) {
 }
 div.appendChild(messageHolder)
 var messageContainer = document.createElement( 'div' );
+var exit = document.createElement('div');
+var exitButton = document.createElement('button');
+exitButton.innerHTML = 'Exit';
+exitButton.onclick = function() {
+  div.style.opacity = 0; div.style.transition = "opacity 1s"; clearThread();
+};
+exit.style.float = 'right';
+exit.appendChild(exitButton);
+div.appendChild(exit);
 div.appendChild(messageContainer);
 messageContainer.appendChild( submitForm );
 submitForm.appendChild( comment );
@@ -122,22 +134,21 @@ function update(json)
   // webpage
 }
 
-// var json = [ {'text': 'Using overflow with a value other than visible (the default) creates a new block formatting context. This is necessary for technical reasons — if a float intersected with the scrolling element it would forcibly rewrap the content after each scroll step, leading to a slow scrolling experience.Using overflow with a value other than visible (the default) creates a new block formatting context. '}, {'text': 'qwerty'}, {'text': 'asdf'}];
-//
-// var json = [];
-// for (var i =0; i < 2000; i++)
-//   json.push({'text': i + ' Using overflow with a value other than visible (the default) creates a new block formatting context. This is necessary for technical reasons — if a float intersected with the scrolling element it would forcibly rewrap the content after each scroll step, leading to a slow scrolling experience.Using overflow with a value other than visible (the default) creates a new block formatting context.'});
-//
-// update(json);
+var json = [ {'text': 'Using overflow with a value other than visible (the default) creates a new block formatting context. This is necessary for technical reasons — if a float intersected with the scrolling element it would forcibly rewrap the content after each scroll step, leading to a slow scrolling experience.Using overflow with a value other than visible (the default) creates a new block formatting context. '}, {'text': 'qwerty'}, {'text': 'asdf'}];
+
+var json = [];
+for (var i =0; i < 2000; i++)
+  json.push({'text': i + ' Using overflow with a value other than visible (the default) creates a new block formatting context. This is necessary for technical reasons — if a float intersected with the scrolling element it would forcibly rewrap the content after each scroll step, leading to a slow scrolling experience.Using overflow with a value other than visible (the default) creates a new block formatting context.'});
+
+update(json);
 
 
 function clearThread(){
   for (var i = 99; i >= 0; i--) {
     document.getElementById("text" + i).innerHTML = '';
-    console.log(i);
   }
 }
 
 
 
-update(json);
+// update(json);
