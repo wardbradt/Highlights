@@ -5,7 +5,7 @@ document.body.style.width = '100%';
 
 var div = document.createElement( 'div' );
 var submitForm = document.createElement( 'form' );
-// submitForm.action = "";
+submitForm.action = "http://localhost:8000/api/comment/";
 submitForm.method = "post";
 submitForm.style.margin = '0 auto';
 submitForm.style.border = "1px solid black";
@@ -14,11 +14,18 @@ var comment = document.createElement( 'input' );
 comment.type = 'text';
 comment.id = 'comment';
 comment.name = 'comment_field';
-// comment.placeholder = 'Write your thoughts';
-
+comment.display = "inline-block";
+comment.placeholder = 'Write your thoughts';
+alert(window.location.href);
 var submitButton = document.createElement( 'input' );
 submitButton.type = 'submit';
 submitButton.value = 'Submit';
+submitButton.onclick = function() {
+    postdata = {};
+    postdata["text"] = document.getElementById("comment").innerHTML;
+    postdata["selectedText"] = document.getSelection().toString();
+    postdata["webpage"] = window.location.href;
+}
 
 //append all elements
 document.body.appendChild( div );
@@ -31,7 +38,7 @@ div.style.left = '60%';
 div.style.width = '40%';
 div.style.height = '100%';
 div.style.backgroundColor = 'lightblue';
-div.style.opacity = 0.9;
+div.style.opacity = 0;
 div.style.zIndex = 2147483647;
 
 
@@ -87,3 +94,8 @@ function appendMessage(message, order)
 appendMessage('hello', 0);
 appendMessage('12345', 2);
 appendMessage('asdf', 1);
+div.style.backgroundColor = 'white';
+div.style.opacity = 0;
+
+//set attributes for submitForm
+submitForm.action = '';
