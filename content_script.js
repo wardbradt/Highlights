@@ -17,3 +17,4 @@ chrome.extension.onRequest.addListener(function (request, sender, sendResponse) 
     else
         sendResponse({}); // snub them.
 });
+

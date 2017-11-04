@@ -30,15 +30,26 @@ ALLOWED_HOSTS = []
 
 # Application definition
 
+AUTHENTICATION_BACKENDS = (
+    'userena.backends.UserenaAuthenticationBackend',
+    'guardian.backends.ObjectPermissionBackend',
+    'django.contrib.auth.backends.ModelBackend',
+)
+
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
+    'django.contrib.sites',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'haystack',
-    'app'
+    'app',
+    'account',
+    'userena',
+    'guardian',
+    'easy_thumbnails'
 ]
 
 import os
@@ -60,6 +71,30 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'commentserver.urls'
+
+AUTH_PROFILE_MODULE = 'accounts.MyProfile'
+
+LOGIN_REDIRECT_URL = '/accounts/%(username)s/'
+LOGIN_URL = '/accounts/signin/'
+LOGOUT_URL = '/accounts/signout/'
+
+EMAIL_BACKEND = 'django.core.mail.backends.dummy.EmailBackend'
+
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'yourgmailaccount@gmail.com'
+EMAIL_HOST_PASSWORD = 'yourgmailpassword'
+
+ANONYMOUS_USER_ID = -1
+
+AUTH_PROFILE_MODULE = 'accounts.MyProfile'
+
+USERENA_SIGNIN_REDIRECT_URL = '/accounts/%(username)s/'
+LOGIN_URL = '/accounts/signin/'
+LOGOUT_URL = '/accounts/signout/'
+
+SITE_ID = 1
 
 TEMPLATES = [
     {

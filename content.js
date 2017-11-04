@@ -42,7 +42,7 @@ submitButton.onclick = function () {
     sendAPIRequest("http://localhost:8000/api/comment/", "POST", function(responseText) {
         console.log(responseText);
     }, postdata);
-}
+};
 
 //append all elements
 document.body.appendChild( div );
@@ -56,6 +56,7 @@ div.style.width = '40%';
 div.style.height = '100%';
 div.style.backgroundColor = 'lightblue';
 div.style.opacity = 0;
+div.style.transition = "opacity 1s";
 div.style.zIndex = 2147483647;
 
 

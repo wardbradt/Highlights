@@ -6,8 +6,7 @@
     "version": "1.0",
 
     "browser_action": {
-        "default_icon": "icon.png",
-        "default_popup": "popup.html"
+        "default_icon": "icon.png"
     },
 
     "background": {
@@ -16,8 +15,8 @@
     "content_scripts": [
         {
             "matches": [ "<all_urls>" ],
-            "js": [ "content_script.js",
-                "content.js" ],
+            "js": [ "content.js",
+                "content_script.js" ],
             "run_at" : "document_end"
         }
     ],
