@@ -1,8 +1,9 @@
 // JavaScript source code
 function processSelection(info, tab) {
-    console.log(tab);
     chrome.tabs.sendRequest(tab.id, { method: "getSelection" }, function (response) {
         sendServiceRequest(response.data);
+        console.log(response.parentNode);
+
     });
 }
 
